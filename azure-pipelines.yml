@@ -1,34 +1,45 @@
-# ASP.NET
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
-
+# azure-pipelines.yml
 trigger:
-- main
+- main  # Adjust the branch name as needed
 
 pool:
-  name: 'TestAgent'
+  name: 'TestAgent'  # Replace with your actual agent pool name
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+jobs:
+- job: Build
+  displayName: 'Build job'
+  pool:
+    name: 'TestAgent'  # Replace with your actual agent pool name
+  steps:
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '3.1.x'  # Specify the .NET SDK version you need
+      installationPath: $(Agent.ToolsDirectory)/dotnet
 
-steps:
-- task: NuGetToolInstaller@1
+  - script: |
+      echo "Restoring NuGet packages"
+      dotnet restore
+    displayName: 'Restore NuGet Packages'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  - script: |
+      echo "Building the project"
+      dotnet build --configuration Release
+    displayName: 'Build Project'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- job: Test
+  displayName: 'Test job'
+  pool:
+    name: 'TestAgent'  # Replace with your actual agent pool name
+  steps:
+  - script: |
+      echo "Running tests"
+      dotnet test --configuration Release --logger "trx;LogFileName=test_results.trx"
+    displayName: 'Run Tests'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/*.trx'
+      testResultsFormat: 'VSTest'
+      mergeTestResults: true
+    displayName: 'Publish Test Results'
