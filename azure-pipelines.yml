@@ -11,16 +11,6 @@ jobs:
   pool:
     name: 'TestAgent'  # Replace with your actual agent pool name
   steps:
-  - task: UseDotNet@2
-    inputs:
-      packageType: 'sdk'
-      version: '8.0'  # Specify the .NET SDK version you need
-      installationPath: $(Agent.ToolsDirectory)/dotnet
-
-  - script: |
-      echo "Restoring NuGet packages"
-      dotnet restore
-    displayName: 'Restore NuGet Packages'
 
   - script: |
       echo "Building the project"
