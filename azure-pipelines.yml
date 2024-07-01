@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'TestAgent'
+  name: 'TestAgent'
 
 variables:
   solution: '**/*.sln'
