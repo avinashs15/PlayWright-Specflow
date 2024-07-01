@@ -14,7 +14,7 @@ jobs:
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
-      version: '3.1.x'  # Specify the .NET SDK version you need
+      version: '8.0'  # Specify the .NET SDK version you need
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
   - script: |
