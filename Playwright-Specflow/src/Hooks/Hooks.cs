@@ -16,7 +16,7 @@ namespace Playwright_Specflow.src.Hooks
         {
             var playwright = await Playwright.CreateAsync();
             _browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { 
-                Headless = false,
+                Headless = true,
                 Channel ="chrome" 
             
             });
