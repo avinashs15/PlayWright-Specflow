@@ -12,7 +12,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '4.0'  # Replace with your desired .NET Core version
+        dotnet-version: '8.0'  # Replace with your desired .NET Core version
 
     - name: Restore dependencies
       run: dotnet restore
