@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace Playwright_Specflow.src.Pages;
@@ -18,7 +17,7 @@ public class CheckoutPage
     private readonly string continueButton = ".cart_button";
     private readonly string finishButton = "text='FINISH'";
 
-    
+
 
     // Enter user details during checkout
     public async Task EnterUserDetailsAsync(string firstName, string lastName, string zipCode)

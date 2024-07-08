@@ -1,6 +1,6 @@
 # azure-pipelines.yml
 trigger:
-- main  # Adjust the branch name as needed
+- none  # Adjust the branch name as needed
 
 pool:
   name: 'TestAgent'  # Replace with your actual agent pool name

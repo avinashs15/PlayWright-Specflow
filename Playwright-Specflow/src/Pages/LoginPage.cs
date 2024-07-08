@@ -1,11 +1,12 @@
 using Microsoft.Playwright;
 
 namespace Playwright_Specflow.src.Pages;
-public class LoginPage 
+public class LoginPage
 {
     private readonly IPage _page;
 
-    public LoginPage(Hooks.Hooks page){
+    public LoginPage(Hooks.Hooks page)
+    {
         _page = page._page;
     }
 

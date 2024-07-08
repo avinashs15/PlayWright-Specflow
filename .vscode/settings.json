@@ -2,12 +2,5 @@
     "dotnet.defaultSolution": "Playwright-Specflow.sln",
     "cucumberautocomplete.steps": [
         "**/src/Steps/*.cs"
-    ],
-    "editor.quickSuggestions": {
-        "other": "on",
-        "comments": "off",
-        "strings": "off"
-    },
-    "editor.suggestOnTriggerCharacters": true
-    
+    ]
 }
