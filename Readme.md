@@ -181,7 +181,7 @@ steps:
     testResultsFiles: '**/*.trx'
     searchFolder: '$(System.DefaultWorkingDirectory)'
   displayName: 'Publish test results'
-
+```
 
 ## GitHub Actions
 
