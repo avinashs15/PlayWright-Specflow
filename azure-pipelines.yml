@@ -14,7 +14,7 @@ jobs:
 
   - script: |
       echo "Building the project"
-      dotnet build --configuration Release
+      dotnet build Playwright-Specflow/Playwright-Specflow.csproj --configuration Release
     displayName: 'Build Project'
 
 - job: Test
